@@ -1,5 +1,5 @@
 import SockJS from 'sockjs-client';
-import { Client, IMessage, StompSubscription } from '@stomp/stompjs';
+import { Client, IMessage } from '@stomp/stompjs';
 
 const URL = import.meta.env.VITE_WS_URL;
 
