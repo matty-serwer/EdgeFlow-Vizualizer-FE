@@ -1,7 +1,7 @@
 import SockJS from 'sockjs-client';
 import { Client, IMessage } from '@stomp/stompjs';
 
-const URL = import.meta.env.VITE_API_BASE_URL;
+const URL = import.meta.env.VITE_WS_URL;
 
 let stompClient: Client | null = null;
 
@@ -13,6 +13,7 @@ export const connectStomp = (onMessage: (data: any) => void) => {
       console.log('[WS] Connected');
       stompClient?.subscribe('/topic/data', (message: IMessage) => {
         const payload = JSON.parse(message.body);
+        console.log("payload: ", payload);
         onMessage(payload);
       });
     },

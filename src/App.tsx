@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { connectStomp, disconnectStomp } from "./utils/stompClient";
 import { Container, Typography } from "@mui/material";
-// Components
-import Dashboard from "./coponents/Dashboard";
+import Dashboard from "./components/Dashboard";
+import styles from './App.module.css';
 
 export default function App() {
   const [data, setData] = useState<any | null>(null);
@@ -13,11 +13,12 @@ export default function App() {
   }, []);
 
   return (
-    <Container maxWidth="sm" style={{ marginTop: '2rem' }}>
-      <Typography variant="h4" gutterBottom>
-        EdgeFlow Daashboard
+    <Container maxWidth="md" className={styles.container}>
+      <h1 className={styles.gradientBanner}>EdgeFlow</h1>
+      <Typography variant="h4" gutterBottom className={styles.dashboard}>
+        Latest Broadcast
       </Typography>
       <Dashboard data={data} />
     </Container>
-  )
+  );
 }
